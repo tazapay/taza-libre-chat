@@ -27,7 +27,7 @@ async function loadDefaultEndpointsConfig(req) {
   };
 
   const orderedAndFilteredEndpoints = enabledEndpoints.reduce((config, key, index) => {
-    if (endpointConfig[key]) {
+    if (key === 'custom' && endpointConfig[key]) {
       config[key] = { ...(endpointConfig[key] ?? {}), order: index };
     }
     return config;
