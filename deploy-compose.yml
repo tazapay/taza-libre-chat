@@ -1,10 +1,10 @@
 services:
   api:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.multi
-    #   target: api-build
-    image: ghcr.io/danny-avila/librechat-dev-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.multi
+      target: api-build
+    # image: ghcr.io/danny-avila/librechat-dev-api:latest
     container_name: LibreChat-API
     ports:
       - 3080:3080
@@ -19,7 +19,7 @@ services:
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production
-      # - MONGO_URI=mongodb://mongodb:27017/LibreChat  # Using Atlas URL from .env instead
+      - MONGO_URI=${MONGO_URI}  # Using Atlas URL from .env instead
       - MEILI_HOST=http://meilisearch:7700
       - RAG_PORT=${RAG_PORT:-8000}
       - RAG_API_URL=http://rag_api:${RAG_PORT:-8000}
