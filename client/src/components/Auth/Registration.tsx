@@ -158,8 +158,8 @@ const Registration: React.FC = () => {
                 message: localize('com_auth_email_max_length'),
               },
               pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: localize('com_auth_email_pattern'),
+                value: /^[A-Z0-9._%+-]+@tazapay\.com$/i,
+                message: localize('com_auth_email_pattern') + ' (Only @tazapay.com email addresses are allowed)',
               },
             })}
             {renderInput('password', 'com_auth_password', 'password', {
