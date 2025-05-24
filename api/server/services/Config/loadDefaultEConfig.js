@@ -16,14 +16,14 @@ async function loadDefaultEndpointsConfig(req) {
   const endpointConfig = {
     [EModelEndpoint.openAI]: config[EModelEndpoint.openAI],
     [EModelEndpoint.agents]: config[EModelEndpoint.agents],
-    // [EModelEndpoint.assistants]: assistants,
-    // [EModelEndpoint.azureAssistants]: azureAssistants,
-    // [EModelEndpoint.azureOpenAI]: azureOpenAI,
+    [EModelEndpoint.assistants]: assistants,
+    [EModelEndpoint.azureAssistants]: azureAssistants,
+    [EModelEndpoint.azureOpenAI]: azureOpenAI,
     [EModelEndpoint.google]: google,
-    // [EModelEndpoint.chatGPTBrowser]: chatGPTBrowser,
-    // [EModelEndpoint.gptPlugins]: gptPlugins,
+    [EModelEndpoint.chatGPTBrowser]: chatGPTBrowser,
+    [EModelEndpoint.gptPlugins]: gptPlugins,
     [EModelEndpoint.anthropic]: config[EModelEndpoint.anthropic],
-    // [EModelEndpoint.bedrock]: config[EModelEndpoint.bedrock],
+    [EModelEndpoint.bedrock]: config[EModelEndpoint.bedrock],
   };
 
   const orderedAndFilteredEndpoints = enabledEndpoints.reduce((config, key, index) => {
