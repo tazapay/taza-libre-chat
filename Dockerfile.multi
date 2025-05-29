@@ -19,7 +19,7 @@ COPY packages/data-schemas/package*.json ./packages/data-schemas/
 COPY packages/client/package*.json ./packages/client/
 COPY client/package*.json ./client/
 COPY api/package*.json ./api/
-COPY ./librechat.yaml /app/librechat.yaml
+COPY librechat.yaml /app/librechat.yaml
 
 # Install all dependencies for every build
 FROM base-min AS base
