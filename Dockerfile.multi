@@ -18,6 +18,7 @@ COPY packages/mcp/package*.json ./packages/mcp/
 COPY packages/data-schemas/package*.json ./packages/data-schemas/
 COPY client/package*.json ./client/
 COPY api/package*.json ./api/
+COPY ./librechat.yaml /app/librechat.yaml
 
 # Install all dependencies for every build
 FROM base-min AS base
