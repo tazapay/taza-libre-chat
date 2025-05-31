@@ -1,4 +1,10 @@
-const openIdClient = require('openid-client');
+let OpenIDClient;
+(async () => {
+  OpenIDClient = await import('openid-client');
+})().catch(err => {
+  console.error('Failed to initialize OpenID client:', err);
+});
+
 const cookies = require('cookie');
 const jwt = require('jsonwebtoken');
 const {
@@ -67,8 +73,11 @@ const refreshController = async (req, res) => {
   }
   if (token_provider === 'openid' && isEnabled(process.env.OPENID_REUSE_TOKENS) === true) {
     try {
+      if (!OpenIDClient) {
+        throw new Error('OpenID client not initialized');
+      }
       const openIdConfig = getOpenIdConfig();
-      const tokenset = await openIdClient.refreshTokenGrant(openIdConfig, refreshToken);
+      const tokenset = await OpenIDClient.refreshTokenGrant(openIdConfig, refreshToken);
       const claims = tokenset.claims();
       const user = await findUser({ email: claims.email });
       if (!user) {
